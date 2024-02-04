@@ -1,6 +1,7 @@
 package com.nayson.aulafirebase;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class FirebaseHelper {
 
@@ -11,8 +12,8 @@ public class FirebaseHelper {
         return FirebaseAuth.getInstance();
     }
 
-    public static boolean getUser(){
-        return getAuth().getCurrentUser() != null;
+    public static FirebaseUser getUser(){
+        return getAuth().getCurrentUser();
     }
 
     public static String validError(String err){

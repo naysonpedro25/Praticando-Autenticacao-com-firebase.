@@ -54,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
             loginUser(email, senha);
             binding.progressCircular.setVisibility(View.VISIBLE);
         }else{
-            Snackbar.make(binding.getRoot(),"Dados invalidos", Snackbar.LENGTH_SHORT).show();
+            binding.email.setError("Digite um endereço de e-mail!");
+            binding.senha.setError("Digite sua senha");
+//            Snackbar.make(binding.getRoot(),"", Snackbar.LENGTH_INDEFINITE).show();
         }
     }
     private void loginUser(String email, String senha) {
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                     finish();
                 }else{
+                    Log.i("TAGFDS", task.getException().getMessage());
                     Snackbar.make(binding.getRoot(),FirebaseHelper.validError(task.getException().getMessage()), Snackbar.LENGTH_INDEFINITE).show();
                     binding.progressCircular.setVisibility(View.INVISIBLE);
                 }
